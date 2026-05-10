@@ -2,7 +2,7 @@
 
 > **Multimodal Emotion Intelligence** — fuse text, audio, image, and physiological signals to understand how people feel, with built-in explainability.
 
-[![CI](https://github.com/yourusername/emotionlens/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/emotionlens/actions)
+
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://python.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
