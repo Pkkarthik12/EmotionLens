@@ -1,0 +1,88 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "emotionlens"
+version = "0.1.0"
+description = "Multimodal emotion intelligence — fuse text, audio, image, and physiological signals."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+keywords = ["emotion", "nlp", "audio", "multimodal", "sentiment", "affective computing"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+# Core deps — no heavy ML frameworks required for basic text analysis
+dependencies = [
+    "numpy>=1.24",
+    "click>=8.1",
+]
+
+[project.optional-dependencies]
+transformers = [
+    "transformers>=4.35",
+    "torch>=2.0",
+]
+audio = [
+    "librosa>=0.10",
+    "soundfile>=0.12",
+]
+image = [
+    "Pillow>=10.0",
+    "torchvision>=0.15",
+]
+api = [
+    "fastapi>=0.104",
+    "uvicorn[standard]>=0.24",
+    "python-multipart>=0.0.6",
+]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "black>=23",
+    "ruff>=0.1",
+    "mypy>=1.6",
+    "httpx>=0.25",   # for FastAPI test client
+]
+all = [
+    "emotionlens[transformers,audio,image,api]",
+]
+
+[project.scripts]
+emotionlens = "emotionlens.cli:cli"
+
+[project.urls]
+Homepage = "https://github.com/yourusername/emotionlens"
+Documentation = "https://github.com/yourusername/emotionlens#readme"
+Issues = "https://github.com/yourusername/emotionlens/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["emotionlens*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.black]
+line-length = 100
+target-version = ["py39"]
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I", "N", "W"]
+
+[tool.mypy]
+python_version = "3.9"
+ignore_missing_imports = true
